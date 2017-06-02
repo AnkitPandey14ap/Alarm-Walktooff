@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button startButton;
     private Button stopButton;
-    private Button stopAtButton;
+    private Button startAtButton;
     private PendingIntent pendingIntent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         startButton = (Button) findViewById(R.id.startButton);
         stopButton = (Button) findViewById(R.id.stopButton);
-        stopAtButton = (Button) findViewById(R.id.stopAtButton);
+        startAtButton = (Button) findViewById(R.id.startAtButton);
 
         //It will perform  a broadcast
 /*
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        stopAtButton.setOnClickListener(new View.OnClickListener() {
+        startAtButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startAt();
@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
         /* Set the alarm to start at 10:30 AM */
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 2);
-        calendar.set(Calendar.MINUTE, 49);
+        calendar.set(Calendar.HOUR_OF_DAY, 4);
+        calendar.set(Calendar.MINUTE, 23);
 
         /* Repeating on every 20 minutes interval */
         manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
