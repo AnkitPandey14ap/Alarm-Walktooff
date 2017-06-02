@@ -122,10 +122,6 @@ public class MainActivity extends AppCompatActivity {
 
         manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),interval,pendingIntent);
 
-        *//*final int FIFTEEN_SEC_MILLIS = 15000;
-        manager.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
-                FIFTEEN_SEC_MILLIS, pendingIntent);
-*//*
         Log.i("Ankit", "set");
         Toast.makeText(this, "Alarm set", Toast.LENGTH_SHORT).show();*/
     }
