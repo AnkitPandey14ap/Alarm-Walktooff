@@ -32,8 +32,18 @@ public class MainActivity extends AppCompatActivity {
         stopAtButton = (Button) findViewById(R.id.stopAtButton);
 
         //It will perform  a broadcast
+/*
         Intent alarmIntent=new Intent(this, MainActivity.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
+        pendingIntent = PendingIntent.getActivity(this, 0, alarmIntent, 0);
+*/
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setAction(Intent.ACTION_MAIN);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        pendingIntent = PendingIntent.getActivity(this, 0,
+                intent, 0);
+
+
 
 
         startButton.setOnClickListener(new View.OnClickListener() {
@@ -62,16 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.setAction(Intent.ACTION_MAIN);
-        //intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-                intent, 0);
+/*
 
         int alarmType = AlarmManager.ELAPSED_REALTIME;
-        final int FIFTEEN_SEC_MILLIS = 5000;
+        final int FIFTEEN_SEC_MILLIS = 1000;
 
         AlarmManager alarmManager = (AlarmManager)
                 this.getSystemService(this.ALARM_SERVICE);
@@ -79,51 +83,22 @@ public class MainActivity extends AppCompatActivity {
         alarmManager.setRepeating(alarmType, SystemClock.elapsedRealtime() + FIFTEEN_SEC_MILLIS,
                 FIFTEEN_SEC_MILLIS, pendingIntent);
 
-        Log.i("Ankit", "Alarm set.");
+
+        Log.i("Ankit", "set");
+        Toast.makeText(this, "Alarm set", Toast.LENGTH_SHORT).show();
+*/
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        int interval = 8000;
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        int interval = 5000;
 
         manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),interval,pendingIntent);
 
         Log.i("Ankit", "set");
-        Toast.makeText(this, "Alarm set", Toast.LENGTH_SHORT).show();*/
+        Toast.makeText(this, "Alarm set", Toast.LENGTH_SHORT).show();
+
     }
 
     private void stop() {
