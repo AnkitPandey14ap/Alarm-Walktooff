@@ -92,19 +92,27 @@ public class MainActivity extends AppCompatActivity {
 
 
         AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        int interval = 5000;
+        int interval = 2000;
 
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),interval,pendingIntent);
+        //manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),interval,pendingIntent);
+        //manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKE‌​UP, System.currentTimeMillis(), interval, pendingIntent);
 
+        //manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,System.currentTimeMillis()+interval,pendingIntent);
+        Calendar futureDate = Calendar.getInstance();
+        final long INTERVAL_SEVEN_SECONDS = 7 * 1000;
+        manager.setRepeating(AlarmManager.RTC_WAKEUP, futureDate
+                .getTime().getTime(), INTERVAL_SEVEN_SECONDS, pendingIntent);
+
+        //manager.setExact(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(),pendingIntent);
         Log.i("Ankit", "set");
         Toast.makeText(this, "Alarm set", Toast.LENGTH_SHORT).show();
 
     }
 
     private void stop() {
-        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        manager.cancel(pendingIntent);
-        Toast.makeText(this, "Alarm canceled", Toast.LENGTH_SHORT).show();
+            AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            manager.cancel(pendingIntent);
+            Toast.makeText(this, "Alarm canceled", Toast.LENGTH_SHORT).show();
     }
 
     public void startAt() {
@@ -115,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, 4);
-        calendar.set(Calendar.MINUTE, 23);
+        calendar.set(Calendar.MINUTE, 32);
 
         /* Repeating on every 20 minutes interval */
         manager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
